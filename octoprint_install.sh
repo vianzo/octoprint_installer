@@ -52,7 +52,7 @@ if [ -d "${HOMEDIR}" ]; then
     echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-        echo_yellow "# Delete pi octo and $HOMEDIR folder"
+        echo_yellow "# Delete pi and $HOMEDIR folder"
         userdel -r pi
     else
         echo_red "User pi already exist. Installation stoped"
