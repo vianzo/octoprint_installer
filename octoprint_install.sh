@@ -48,22 +48,22 @@ function setup_venv {
 export -f setup_venv
 
 if [ -d "${HOMEDIR}" ]; then
-    read -p "User octo already exist, delete user and continue? (Y/n)" -n 1 -r
+    read -p "User pi already exist, delete user and continue? (Y/n)" -n 1 -r
     echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-        echo_yellow "# Delete user octo and $HOMEDIR folder"
-        userdel -r octo
+        echo_yellow "# Delete pi octo and $HOMEDIR folder"
+        userdel -r pi
     else
-        echo_red "User octo already exist. Installation stoped"
+        echo_red "User pi already exist. Installation stoped"
         exit
     fi
 fi
 
-echo_yellow "# Create octo user"
+echo_yellow "# Create octo pi"
 useradd -m -s /bin/bash -G tty,dialout,video octo
 
-echo_yellow "# Please password for octo user"
+echo_yellow "# Please password for pi user"
 passwd octo
 
 echo_yellow "# Install package dependencies"
@@ -115,26 +115,26 @@ su octo -c "setup_venv"
 echo_yellow "# Configure OctoPrint autostart"
 curl -fsvL \
   -o /etc/systemd/system/octoprint.service \
-  https://raw.githubusercontent.com/Etherlord/octoprint_installer/master/octoprint.service
+  https://raw.githubusercontent.com/vianzo/octoprint_installer/master/octoprint.service
 curl -fsvL \
   -o /etc/default/octoprint \
-  https://raw.githubusercontent.com/Etherlord/octoprint_installer/master/octoprint.default
+  https://raw.githubusercontent.com/vianzo/octoprint_installer/master/octoprint.default
 
 echo_yellow "# Build mjpg-streamer"
-git clone https://github.com/jacksonliam/mjpg-streamer.git /home/octo/mjpg-streamer
-cd /home/octo/mjpg-streamer/mjpg-streamer-experimental
+git clone https://github.com/jacksonliam/mjpg-streamer.git /home/pi/mjpg-streamer
+cd /home/pi/mjpg-streamer/mjpg-streamer-experimental
 export LD_LIBRARY_PATH=.
 make
-cp -v /home/octo/mjpg-streamer/mjpg-streamer-experimental/_build/mjpg_streamer /usr/local/bin/mjpg_streamer
+cp -v /home/pi/mjpg-streamer/mjpg-streamer-experimental/_build/mjpg_streamer /usr/local/bin/mjpg_streamer
 
 echo_yellow "# Configure scripts"
-echo "octo ALL=NOPASSWD: /sbin/shutdown,/bin/systemctl restart octoprint.service" >> /etc/sudoers
+echo "pi ALL=NOPASSWD: /sbin/shutdown,/bin/systemctl restart octoprint.service" >> /etc/sudoers
 curl -fsvL \
   -o /etc/systemd/system/webcam.service \
-  https://raw.githubusercontent.com/Etherlord/octoprint_installer/master/webcam.service
+  https://raw.githubusercontent.com/vianzo/octoprint_installer/master/webcam.service
 curl -fsvL \
   -o /usr/local/bin/webcamDaemon\
-  https://raw.githubusercontent.com/Etherlord/octoprint_installer/master/webcamDaemon
+  https://raw.githubusercontent.com/vianzo/octoprint_installer/master/webcamDaemon
 chmod +x /usr/local/bin/webcamDaemon
 
 systemctl daemon-reload
