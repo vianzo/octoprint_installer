@@ -2,7 +2,7 @@
 PORT=5000
 
 # Base directory to use
-BASEDIR=/home/octo/.octoprint
+BASEDIR=/home/pi/.octoprint
 
 # Configuration file to use
-CONFIGFILE=/home/octo/.octoprint/config.yaml
+CONFIGFILE=/home/pi/.octoprint/config.yaml
