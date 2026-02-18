@@ -2,7 +2,7 @@
 
 Octoprint installer for:
 * Armbian systems based on Debian Buster
-* Ubuntu based (tested on 18.04)
+* Ubuntu based (tested on 26.2.0)
 
 # How-to install
 
@@ -18,7 +18,7 @@ Octoprint installer for:
 Download && run
 ```shell
 su -
-wget https://raw.githubusercontent.com/Etherlord/octoprint_installer/master/octoprint_install.sh
+wget https://raw.githubusercontent.com/vianzo/octoprint_installer/master/octoprint_install.sh
 chmod +x octoprint_install.sh
 ./octoprint_install.sh
 ```
