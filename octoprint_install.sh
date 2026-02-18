@@ -60,11 +60,11 @@ if [ -d "${HOMEDIR}" ]; then
     fi
 fi
 
-echo_yellow "# Create octo pi"
-useradd -m -s /bin/bash -G tty,dialout,video octo
+echo_yellow "# Create pi"
+useradd -m -s /bin/bash -G tty,dialout,video pi
 
 echo_yellow "# Please password for pi user"
-passwd octo
+passwd pi
 
 echo_yellow "# Install package dependencies"
 apt-get update
