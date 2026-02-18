@@ -12,7 +12,7 @@ PIDFile=/var/run/octoprint.pid
 EnvironmentFile=/etc/default/octoprint
 Restart=always
 RestartSec=5
-ExecStart=/home/octo/OctoPrint/venv/bin/octoprint --basedir ${BASEDIR} --port=${PORT} --config=${CONFIGFILE}
+ExecStart=/home/pi/OctoPrint/venv/bin/octoprint --basedir ${BASEDIR} --port=${PORT} --config=${CONFIGFILE}
 
 [Install]
 WantedBy=multi-user.target
