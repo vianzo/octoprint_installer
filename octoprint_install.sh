@@ -2,7 +2,7 @@
 
 set -e
 
-export HOMEDIR="/home/octo"
+export HOMEDIR="/home/pi"
 export DISTRIBUTOR="$(/usr/bin/lsb_release -is)"
 
 function echo_yellow {
