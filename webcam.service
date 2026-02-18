@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=octo
+User=pi
 Restart=on-failure
 RestartSec=60
 ExecStart=/usr/local/bin/webcamDaemon
